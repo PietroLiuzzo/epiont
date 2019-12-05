@@ -1,0 +1,61 @@
+CONSTRUCT { 
+?object a crm:E84_Information_carrier ; 
+    crm:P1_is_identified_by ?id ;
+  	epont:carriesText ?inscription ;  
+    dct:temporal ?temporal ;
+	edh:representsTypeOfMonument ?eagleTypeObj ; 
+         	nmo:hasMaterial ?eagleMat ;
+           	lawd:where ?place . 
+?writtenText a crmtex:TX1_Written_text ; 
+          	crm:P56_is_found_on ?object ; 
+          	crm:P108_has_produced_ ?writing ;
+           	crmsci:O6_observed_by ?reading . 
+?reading a crmtex:TX5_Reading ; 
+crm:P20_had_specific_purpose ?transcription ;
+crmtex:TXP3_is_rendered_by ?transcription ;
+crm:P14_carried_out_by ?contributor .
+?writing a crmtex:TX2_Writing ; 
+    extech:uses_technique ?eagleExec ;
+           	crm:P92_brought_into_existence ?text .
+?text a lawd:WrittenWork ;
+    crm:P1_is_identified_by ?workId.
+?transcription a crmtex:TX6_Transcription ;
+            dct:contributor       ?contributor ;
+            dct:publisher          ?publisher ;
+	crm:P49_created ?transcriptionText ;
+	epont:hasEdition ?edition .
+?edition a epont:Edition ;
+edh:hasEditionText ?editionText .
+?transcriptionText a crm:E33_Linguistic_Object ; 
+edh:hasDiplomaticText ?diplomaticText  .
+?place ?otherpredicate ?otherobject .
+
+}
+WHERE { 
+?inscription       a   bm:Inscription .
+  OPTIONAL {?inscription        crm:P2_has_type  ?eagleTypeObj  . 
+    FILTER (STRSTARTS(?eagleTypeObj,'https://www.eagle-network.eu/voc/objtyp/lod/'))}
+  OPTIONAL {?inscription        crm:P46_is_composed_of  ?eagleMat  .
+  FILTER (STRSTARTS(?eagleTypeObj,'https://www.eagle-network.eu/voc/material/lod/'))}
+ OPTIONAL {?inscription        crm:P32_used_general_technique  ?eagleExec  .
+  FILTER (STRSTARTS(?eagleExec,'https://www.eagle-network.eu/voc/writing/lod/'))}
+ 
+  OPTIONAL {?annotation oa:hasTarget ?inscription ;
+                        oa:hasBody ?place .}
+  OPTIONAL {?inscription        dc:contributor  ?contributor  .}
+  OPTIONAL {?inscription        dc:publisher  ?contributor  .}
+  OPTIONAL {?inscription        dct:temporal  ?temporal  .}
+  OPTIONAL {?inscription        crm:P1_is_identified_by  ?id  .}
+  OPTIONAL {?inscription dct:hasPart ?part .
+  ?part dct:hasPart ?workId}
+BIND (STR(?inscription) as ?s)
+BIND (IRI(concat(?s, "/Objekt")) as ?object)
+BIND (IRI(concat(?s, "/writtenText")) as ?writtenText)
+BIND (IRI(concat(?s, "/text")) as ?text)
+BIND (IRI(concat(?s, "/reading")) as ?reading)
+BIND (IRI(concat(?s, "/writing")) as ?writing)
+BIND (IRI(concat(?s, "/edition")) as ?edition)
+BIND (IRI(concat(?s, "/transcription")) as ?transcription)
+BIND (IRI(concat(?s, "/transcriptionText")) as ?transcriptionText)
+
+} LIMIT 1

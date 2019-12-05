@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="urn:absolute:temporary.crmtex/"
+     xml:base="urn:absolute:temporary.crmtex/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://www.cidoc-crm.org/crmtex/">
+        <owl:versionIRI rdf:resource="http://www.cidoc-crm.org/crmtex/0.1/"/>
+        <owl:imports rdf:resource="http://erlangen-crm.org/current/"/>
+        <dc:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">An Extension of CIDOC CRM to Model Ancient Textual Entities</dc:description>
+        <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Achille Felicetti</terms:creator>
+        <dc:title rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">CRMtex</dc:title>
+        <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Francesca Murano</terms:creator>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TXP1_used_writing_system -->
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/crmtex/TXP1_used_writing_system">
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX2_Writing"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/crmtex/TX1_Written_Text"/>
+        <rdfs:comment>Scope note:	
+This property is intended to identify the specific instance of TX3 Writing System employed during the writing event that led to the creation of a TX1 Written Text.</rdfs:comment>
+        <rdfs:label>TXP1 used writing system (writing system used for)</rdfs:label>
+        <skos:notation>TXP1</skos:notation>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TXP2_is_included_within -->
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/crmtex/TXP2_is_included_within">
+        <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P56_bears_feature"/>
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX1_Written_Text"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/crmtex/TX4_Writing_Field"/>
+        <rdfs:comment>Scope note:	
+This property is intended to describe the relation existing between a TX1 Written Text and the TX4 Writing Field, specifically created to accommodate the text, within which it is inscribed. This relation becomes quite relevant in the very frequent case where more than a single text is found on different areas of a specific support.</rdfs:comment>
+        <rdfs:label>TXP2 is included within (included)</rdfs:label>
+        <skos:notation>TXP2</skos:notation>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TXP3_is_rendered_by_(renders) -->
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/crmtex/TXP3_is_rendered_by_(renders)">
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX5_Reading"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/crmtex/TX6_Transcription"/>
+        <rdfs:comment>Scope note:	
+This property is intended to emphasize the close connection between the TX5 Reading and TX6 Transcription activities, by outlining, in particular, the accurate observation required by scholars in order to perform a valid transcription of a given text.</rdfs:comment>
+        <rdfs:label>TXP3 is rendered by (renders)</rdfs:label>
+        <skos:notation>TXP3</skos:notation>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TXP4_composes_(is_composed_by) -->
+
+    <owl:ObjectProperty rdf:about="http://www.cidoc-crm.org/crmtex/TXP4_composes_(is_composed_by)">
+        <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX7_Written_Text_Fragment"/>
+        <rdfs:range rdf:resource="http://www.cidoc-crm.org/crmtex/TX1_Written_Text"/>
+        <rdfs:comment>Scope note:	
+This property is intended to correlate a text and the different parts of which it can be composed, such as: letters, words, lines or any other scan can be made by scholars because considered to have a particular relevance for the investigation of the text itself.</rdfs:comment>
+        <rdfs:label>TXP4 composes (is composed by)</rdfs:label>
+        <skos:notation>TXP4</skos:notation>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/S19_Encounter_Event -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/S19_Encounter_Event">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/crmtex/S4_Observation"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">S19 Encounter Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/S21_Measurement -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/S21_Measurement">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/crmtex/S4_Observation"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">S21 Measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/S4_Observation -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/S4_Observation">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E13_Attribute_Assignment"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope note:	
+This class comprises the activity of gaining scientific knowledge about particular states of physical reality gained by empirical evidence, experiments and by measurements. 
+We define observation in the sense of natural sciences, as a kind of human activity: at some place and within some time-span, certain physical things and their behavior and interactions are observed, either directly by human sensory impression, or enhanced with tools and measurement devices. 
+The output of the internal processes of measurement devices that do not require additional human interaction are in general regarded as part of the observation and not as additional inference. Manual recordings may serve as additional evidence. Measurements and witnessing of events are special cases of observations. Observations result in a belief about certain propositions. In this model, the degree of confidence in the observed properties is regarded to be “true” by default, but could be described differently by adding a property P3 has note to an instance of S4 Observation, or by reification of the property O16 observed value. 
+Primary data from measurement devices are regarded in this model to be results of observation and can be interpreted as propositions believed to be true within the (known) tolerances and degree of reliability of the device. 
+Observations represent the transition between reality and propositions in the form of instances of a formal ontology, and can be subject to data evaluation from this point on. For instance, detecting an archaeological site on satellite images is not regarded as an instance of S4 Observation, but as an instance of S6 Data Evaluation. Rather, only the production of the images is regarded as an instance of S4 Observation.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">S4 Observation</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">S4</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX1_Written_Text -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX1_Written_Text">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E25_Man-Made_Feature"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of E25 Man-Made Feature intended to describe a particular feature (i.e., set of glyphs) created (i.e., written) on various kinds of support, having semiotic significance and the declared purpose of conveying a specific message towards a given recipient or group of recipients.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX1 Written Text</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX1</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX2_Writing -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX2_Writing">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E12_Production"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of E12 Production indicating the activity of creating textual entities using various techniques (painting, sculpture, etc.) and by means of specific tools on a given physical carrier in a non-mechanical way.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX2 Writing</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX2</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX3_Writing_System -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX3_Writing_System">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E29_Design_or_Procedure"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of E29 Design or Procedure refers to a conventional system consisting of a set of signs (graphemes, E90) used to codify a natural language. A writing system can be used to notate different natural languages, by means of specific rules in the combination and phonological value assignment of the chosen graphemes. It is used to produce a TX1 Written Text during a TX2 Writing event.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX3 Writing System</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX3</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX4_Writing_Field -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX4_Writing_Field">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E25_Man-Made_Feature"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of E25 Man-Made Feature, usually understood as the surface or portion of the physical carrier reserved, delimited and arranged for the purpose of accommodating a written text, to highlight and isolate it from the other parts of the object to which it belongs, to enhance and guarantee its readability. This entity is paramount in epigraphy, in which a specific element called “epigraphic field” has been defined by the discipline itself. Its importance is also evident in papyrology and codicology, where a clear distinction between area(s) containing the written text and empty parts of the support (margins, intercolumnia, etc.) is significant for the definition of styles and periods of the document.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX4 Writing Field</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX4</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX5_Reading -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX5_Reading">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/crmtex/S4_Observation"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of the CRMsci S4 Observation class, referring to the scientific autoptic examination of the text and constituting the first action required in preparation for its study. It consists of an accurate analysis of the surface and the signs and prescribes the use of specific tools and procedures, to establishing as faithfully as possible the exact value of each sign drawn on the physical feature.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX5 Reading</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX5</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX6_Transcription -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX6_Transcription">
+        <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E7_Activity"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 
+Subclass of E7 Activity, referring to the activity of re-writing the text conducted by an editor. This operation, in some cases, involves a writing system (TX3) different from that of the original text (e.g., Latin characters to render a Coptic text); this results in a re-encoding of the text itself and, from a linguistic point of view, it is indicated more properly as a ‘transliteration’, because it implies a 1:1 relation between the signs of the two writing systems. The P16 used specific object (was used for) property can be used to specify the role of the original graphemes during the commuting operations.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX6 Transcription</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX6</skos:notation>
+    </owl:Class>
+    
+
+
+    <!-- http://www.cidoc-crm.org/crmtex/TX7_Written_Text_Fragment -->
+
+    <owl:Class rdf:about="http://www.cidoc-crm.org/crmtex/TX7_Written_Text_Fragment">
+        <rdfs:subClassOf rdf:resource="http://www.cidoc-crm.org/crmtex/TX1_Written_Text"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Scope Note: 	
+Subclass of TX1 Written Text intended to identify portions of text considered to be of particular significance by scholars, as witnesses of a certain meaning or bearers of a particular phenomenon relevant to the investigation, study and understanding of the ancient text. Examples of such text portions are: columns, fragments, sections, paragraphs, as well as single words or letters, or other components of the written text. To each of these entities can be associated a single production event (TX2) or destruction event (E6), as in the case of letters or words damaged or worn by atmospheric agents or human interventions, as well as specific conditions (E3) for documenting its status during the observation process (S4). The relationship between a written text (TX1) and its components is documented through the TXP4 is constituted by property.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX7 Written Text Fragment</rdfs:label>
+        <skos:notation rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">TX7</skos:notation>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,84 @@
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX nmo: <http://nomisma.org/ontology#>
+PREFIX edh: <http://edh-www.adw.uni-heidelberg.de/edh/ontology#>
+PREFIX dc: <http://purl.org/dc/terms/>
+PREFIX lawd: <http://lawd.info/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX gn: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX crmsci: <http://www.cidoc-crm.org/crmsci/>
+PREFIX crmtex: <http://www.cidoc-crm.org/crmtex/>
+PREFIX crm: <http://erlangen-crm.org/current/>
+PREFIX epont: <http://Temporary.Epigraphic.Ontology/>
+
+
+CONSTRUCT { 
+?object a crm:E84_Information_carrier ; 
+  	epont:carriesText ?inscription ;  
+	edh:representsTypeOfMonument ?eagleTypeObj ; 
+         	nmo:hasMaterial ?eagleMat ;
+           	lawd:foundAt ?place . 
+?writtenText a crmtex:TX1_Written_text ; 
+          	crm:P56_is_found_on ?object ; 
+nmo:hasEndDate   ?dateE ; 
+nmo:hasStartDate       ?dateS ;
+          	crm:P108_has_produced_ ?writing ;
+           	crmsci:O6_observed_by ?reading . 
+?reading a crmtex:TX5_Reading ; 
+crm:P20_had_specific_purpose ?transcription ;
+crmtex:TXP3_is_rendered_by ?transcription ;
+crm:P14_carried_out_by ?contributor .
+?writing a crmtex:TX2_Writing ; 
+           	crm:P92_brought_into_existence ?text .
+?text a lawd:WrittenWork .
+?transcription a crmtex:TX6_Transcription ;
+            dct:contributor       ?contributor ;
+        	dct:date               ?date ;
+            dct:publisher          ?publisher ;
+	dct:isPartOf 	?partof ;
+	crm:P49_created ?transcriptionText ;
+	epont:hasEdition ?edition ;
+           	edh:representsTypeOfInscription ?eagleTypeIns .
+?edition a epont:Edition ;
+edh:hasEditionText ?editionText .
+?transcriptionText a crm:E33_Linguistic_Object ; 
+edh:hasDiplomaticText ?diplomaticText  .
+?place a lawd:Place ; 
+        	gn:countryCode  ?country ;
+        	dct:isPartOf   ?broader ;
+?otherpredicate ?otherobject .
+
+}
+WHERE { 
+?inscription       a   edh:Inscription .
+OPTIONAL {?inscription        edh:hasDiplomaticText  ?dipomaticText  .}
+OPTIONAL {?inscription        edh:hasEditionText  ?editionText  .}
+OPTIONAL {?inscription        edh:hasWorkstatus      ?status .}
+OPTIONAL {?inscription        edh:representsTypeOfInscription ?edhIns .}
+OPTIONAL {?inscription        edh:representsTypeOfMonument  ?edhObj  .}
+OPTIONAL {?inscription        nmo:hasMaterial  ?edhMat  .}
+OPTIONAL {?inscription        lawd:foundAt           ?place .}
+OPTIONAL {?inscription        nmo:hasEndDate         ?dateE  .}
+OPTIONAL {?inscription          nmo:hasStartDate       ?dateS .}
+OPTIONAL {?inscription        dct:contributor        ?contributor  .}
+OPTIONAL {?inscription         dct:date               ?date  .}
+OPTIONAL {?inscription        dct:publisher          ?publisher .}
+OPTIONAL {?inscription        dct:isPartOf          ?partof .}
+OPTIONAL {?edhIns rdfs:seeAlso     ?eagleTypeIns .}
+OPTIONAL {?edhObj rdfs:seeAlso     ?eagleTypeObj .}
+OPTIONAL {?edhMat rdfs:seeAlso     ?eagleMatj .}
+OPTIONAL {?place ?otherpredicate ?otherobject .}
+OPTIONAL { ?place skos:broader    ?broader . }
+BIND (replace(STR(?inscription), "inschrift", "objekt") as ?object)
+BIND (replace(STR(?inscription), "inschrift", "writtentext") as ?writtenText)
+BIND (replace(STR(?inscription), "inschrift", "text") as ?text)
+BIND (replace(STR(?inscription), "inschrift", "reading") as ?reading)
+BIND (replace(STR(?inscription), "inschrift", "writing") as ?writing)
+BIND (replace(STR(?inscription), "inschrift", "edition") as ?edition)
+BIND (replace(STR(?inscription), "inschrift", "transcription") as ?transcription)
+BIND (replace(STR(?inscription), "inschrift", "transcriptiontext") as ?transcriptionText)
+} LIMIT 1
