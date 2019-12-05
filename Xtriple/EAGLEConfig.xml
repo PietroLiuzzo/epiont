@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model
+uri="https://xtriples.lod.academy/xtriples.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"
+?>
+<!--https://xtriples.lod.academy/documentation.html
+once stored somewhere, the configuration can be called like in this example
+https://xtriples.lod.academy/extract.xql?configuration=https://xtriples.lod.academy/examples/gods/configuration.xml&format=svg
+to return directly the results (also format turtle for example)
+-->
+<xtriples>
+    <configuration>
+        <vocabularies>
+            <vocabulary prefix="t" uri="http://www.tei-c.org/ns/1.0"/>
+            <vocabulary prefix="epidoc" uri="https://my.project.uri/"/>
+            <!--CHANGE ME-->
+            <vocabulary prefix="tm" uri="https://www.trismegistos.org/text/"/>
+            <vocabulary prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+            <vocabulary prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+            <vocabulary prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
+            <vocabulary prefix="dcterms" uri="http://purl.org/dc/terms/"/>
+            <vocabulary prefix="xsd" uri="http://www.w3.org/2001/XMLSchema#"/>
+            <vocabulary prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
+            <vocabulary prefix="crm" uri="http://erlangen-crm.org/current/"/>
+            <vocabulary prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
+            <vocabulary prefix="frbr" uri="http://purl.org/vocab/frbr/core#"/>
+            <vocabulary prefix="nmo" uri="http://nomisma.org/ontology#"/>
+            <vocabulary prefix="lawd" uri="http://lawd.info/ontology/"/>
+            <vocabulary prefix="foaf" uri="http://xmlns.com/foaf/0.1/"/>
+            <vocabulary prefix="gn" uri="http://www.geonames.org/ontology#"/>
+            <vocabulary prefix="gndo" uri="http://d-nb.info/standards/elementset/gnd#"/>
+            <vocabulary prefix="geo" uri="http://www.opengis.net/ont/geosparql#"/>
+            <vocabulary prefix="edh" uri="http://edh-www.adw.uni-heidelberg.de/edh/ontology#"/>
+            <vocabulary prefix="epnet"
+                uri="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#"/>
+            <vocabulary prefix="edm" uri="http://www.europeana.eu/schemas/edm/"/>
+            <vocabulary prefix="svcs" uri="http://rdfs.org/sioc/services#"/>
+            <vocabulary prefix="doap" uri="http://usefulinc.com/ns/doap#"/>
+            <vocabulary prefix="crmtex" uri="http://www.cidoc-crm.org/crmtex/"/>
+            <vocabulary prefix="crmsci" uri="http://www.cidoc-crm.org/crmsci/"/>
+            <vocabulary prefix="extech" uri="https://w3id.org/executionTechnique/ontology#"/>
+            <vocabulary prefix="eagle" uri="https://www.eaglenetwork.eu/voc/writing/lod/"/>
+            <vocabulary prefix="eagleExTech" uri="https://www.eagle-network.eu/voc/writing/lod/"/>
+            <vocabulary prefix="eagleObjTyp" uri="https://www.eagle-network.eu/voc/objtyp/lod/"/>
+            <vocabulary prefix="eagleInsTyp" uri="https://www.eagle-network.eu/voc/typeins/lod/"/>
+            <vocabulary prefix="eagleMat" uri="https://www.eagle-network.eu/voc/material/lod/"/>
+            <vocabulary prefix="epont" uri="http://Temporary.Epigraphic.Ontology/"/>
+        </vocabularies>
+        <triples>
+            <!--            
+ :Object a crm:E84_Information_carrier ; 
+  	epOnt:carriesText :INS1 ;  
+	dcterms:temporal :Period ;
+	edh:representsTypeOfMonument eagleObjTyp:123 ; 
+	crm:P46_is_composed_of : OBJ2, OBJ3 ; 
+         	nmo:hasMaterial eagleMat:48 ;
+           	lawd:foundAt :Place ; 
+            lawd:origin :Place2 ;
+            crm:P55_has_current_location :Place3 ;
+            epnet:isDocumentedBy :BibliographicResource ;
+	crm:P138i_has_representation :image1 . 
+-->
+
+            <!--            the path where to retrieve an identifier is not specified in EpiDoc, this is where EAGLE has it in most cases-->
+            <statement>
+                <subject prefix="epidoc">//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crm" type="uri">/string("E84_Information_carrier")</object>
+            </statement>
+            <!--            This should create a uri http://base.uri/{id}/WrittenText for the inscription-->
+            <statement>
+                <subject prefix="epidoc">//t:idno[@type='localID']</subject>
+                <predicate prefix="epont">carriesText</predicate>
+                <object prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+            <!--            for dctemporal with PeriodO Uris 
+                <subject resource="http://dbpedia.org/data/Hera.rdf">//foaf:isPrimaryTopicOf/@rdf:resource</subject>
+                picking from the RDF representation-->
+
+            <!--          http://www.stoa.org/epidoc/gl/latest/supp-descobject.html 
+            the use of @ref is however not specified and is the use of the EAGLE project -->
+            <statement>
+                <subject prefix="epidoc">//t:idno[@type='localID']</subject>
+                <predicate prefix="edh">representsTypeOfMonument</predicate>
+                <object type="uri">//t:objectType/@ref</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc">//t:idno[@type='localID']</subject>
+                <predicate prefix="nmo">hasMaterial</predicate>
+                <object type="uri">//t:material/@ref</object>
+            </statement>
+
+            <!--            https://www.stoa.org/epidoc/gl/latest/supp-historigin.html (see last example in section on structured data )-->
+            <statement>
+                <subject prefix="epidoc">//t:idno[@type='localID']</subject>
+                <predicate prefix="lawd">foundAt</predicate>
+                <object type="uri">//t:origPlace/t:placeName/@ref</object>
+            </statement>
+
+            <!--            
+:INS1 a crmtex:TX1_Written_text ; 
+          	crm:P56_is_found_on :Object ; 
+            nmo:hasEndDate  "0300" ; 
+            nmo:hasStartDate   "0001" ;
+            crmtex:TXP2_is_included_within :Field ;
+          	crm:P108_was_produced_by :Activity1;
+          	extech:hasExecutionPhase :Activity2;
+          	extech:hasExecutionPhase :Activity3 ;
+           	crmsci:O6_observed_by :Autopsy1 . -->
+
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crmtex" type="uri">/string("TX1_Written_text")</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P56_is_found_on</predicate>
+                <object prefix="epidoc" type="uri">//t:idno[@type='localID']</object>
+            </statement>
+
+            <!--            http://www.stoa.org/epidoc/gl/latest/supp-historigdate.html-->
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="nmo">hasStartDate</predicate>
+                <object type="literal" datatype="date"
+                    >//t:origin//t:origDate/@notBefore-custom</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="nmo">hasEndDate</predicate>
+                <object type="literal" datatype="date"
+                    >//t:origin//t:origDate/@notAfter-custom</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P108_was_produced_by</predicate>
+                <object prefix="epidoc" append="/Writing" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crmsci">O6_observed_by</predicate>
+                <object prefix="epidoc" append="/Reading" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+            <!--            This is not specified in EpiDoc, it is the use of the EAGLE project-->
+            <statement>
+                <subject prefix="epidoc" append="/WrittenText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="foaf">page</predicate>
+                <object type="uri">//t:idno[@type='URI']</object>
+            </statement>
+
+            <!--            
+:Activity1 a crmtex:TX2_Writing ; 
+        crmtex:TXP1_used_writing_system :Script ;
+        crm:P92_brought_into_existence :Text .
+-->
+            <statement>
+                <subject prefix="epidoc" append="/Writing" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crmtex" type="uri">/string("TX2_Writing")</object>
+            </statement>
+            <!--            http://www.stoa.org/epidoc/gl/latest/supp-structure.html-->
+            <statement>
+                <subject prefix="epidoc" append="/Writing" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crmtex">TXP1_used_writing_system</predicate>
+                <object type="literal">//t:div[@type='edition']/@xml:lang</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Writing" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P92_brought_into_existence</predicate>
+                <object prefix="epidoc" append="/WrittenWork" type="uri">//t:idno[@type='localID']</object>
+            </statement>
+
+            <!--  
+:Text a lawd:WrittenWork ;  # E33linguistic object
+        saws:isVersionOf :AnyTextUri ;
+        saws:isCopyInAnotherLanguageOf  :AnyTextUri .
+-->
+
+            <statement>
+                <subject prefix="epidoc" append="/WrittenWork" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="lawd" type="uri">/string('WrittenWork')</object>
+            </statement>
+
+            <!--            :Autopsy1 a crmtex:TX5_Reading ; 
+crm:P20_had_specific_purpose :Transcription ;
+crmtex:TXP3_is_rendered_by :Transcription ;
+crm:P14_carried_by :editor1 .
+-->
+
+            <statement>
+                <subject prefix="epidoc" append="/Reading" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crmtex" type="uri">/string('TX5_Reading')</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Reading" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P20_had_specific_purpose</predicate>
+                <object prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Reading" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crmtex">TXP3_is_rendered_by</predicate>
+                <object prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+
+            <!--        
+ :Transcription a crmtex:TX6_Transcription ;
+            dct:contributor        :Contributor ;
+        	dct:date               "2014-10-21"^^xsd:date ;
+            dct:publisher          <http://edh-www.adw.uni-heidelberg.de> ;
+	dct:isPartOf 	"Epigraphic Database Heidelberg" ;
+	crm:P49_created :TranscriptionText ;
+	epOnt:hasEdition :Edition ;
+           	edh:representsTypeOfInscription eagleInsTyp:123 ;
+	lawd:hasAttestation :Attestation1 .
+-->
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crmtex" type="uri">/string('TX6_Transcription')</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="dc">publisher</predicate>
+                <object prefix="epidoc" append="/Contributor" type="uri">//t:publisher</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P49_created</predicate>
+                <object prefix="epidoc" append="/TranscriptionText" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P1_is_identified_by</predicate>
+                <object prefix="epidoc" append="/TranscriptionText" type="uri">//t:idno[not(@type='URI')][not(@type='localID')][not(@type='TM')]</object>
+            </statement>
+<!--            This is not in EpiDoc, it is how EAGLE does this mapping-->
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="edh">representsTypeOfInscription</predicate>
+                <object type="uri">//t:term/@ref</object>
+            </statement>
+            <!--            This is done like this only in the EAGLE files!-->
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="crm">P48_has_preferred_identifier</predicate>
+                <object prefix="tm" type="uri"
+                    >//t:idno[@type='TM']</object>
+            </statement>
+
+            <!--            http://www.stoa.org/epidoc/gl/latest/supp-desctext.html
+            the use of @ref to align to an external URI is the use in EAGLE -->
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="edh">representsTypeOfInscription</predicate>
+                <object type="uri">//t:rs[@type='textType']/@ref</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/Transcription" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="epont">hasEdition</predicate>
+                <object prefix="epidoc" append="/Edition" type="uri"
+                    >//t:idno[@type='localID']</object>
+            </statement>
+
+            <!--
+:TranscriptionText a crm:E33_Linguistic_Object ; 
+edh:hasDiplomaticText "string literal?" ;
+epnet:hasTranscription "literal"; 
+	epnet:hasSimplifiedTranscription "literal" .
+    -->
+            <statement>
+                <subject prefix="epidoc" append="/TranscriptionText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="rdf">type</predicate>
+                <object prefix="crm" type="uri">/string('E33_Linguistic_Object')</object>
+            </statement>
+            <statement>
+                <subject prefix="epidoc" append="/TranscriptionText" type="uri"
+                    >//t:idno[@type='localID']</subject>
+                <predicate prefix="epnet">hasTEI-annotatedTranscription</predicate>
+                <object type="literal">/string(//t:div[@type='edition'])</object>
+            </statement>
+
+        </triples>
+    </configuration>
+    <collection>
+        <resource>
+<!--            downloaded from EAGLE website 5.12.2019-->
+            <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="la" xml:base="ex-epidoctemplate.xml">
+		<teiHeader>
+			<fileDesc>
+				<titleStmt>
+				<title>Inscription from Roma</title>
+				</titleStmt>  
+				<publicationStmt>
+				<authority>Epigraphic Database Roma</authority>
+				<idno type="URI">http://www.edr-edr.it/edr_programmi/res_complex_comune.php?id_nr=EDR134390</idno>
+				<idno type="TM">569590</idno>
+				<idno type="localID">EDR134390</idno>	
+				<availability>
+					<licence target=" http://www.europeana.eu/rights/rr-f/">Reserved Rights - Free access via Epigraphic Database Roma</licence>
+				</availability>
+				</publicationStmt>
+				<sourceDesc>
+				<msDesc>
+					<msIdentifier>
+						
+						
+						
+						<repository>ignoratur, periit</repository>
+						<collection/>
+						<idno/>
+					</msIdentifier>
+					<physDesc>
+						<objectDesc>
+						<supportDesc>
+							<support>
+								<objectType>ara vel basis</objectType>
+								<material ref="http://www.eagle-network.eu/voc/material/lod/48">marmor</material>
+								<p/>
+								<dimensions unit="cm">
+								<height/>
+								<width/>
+								<depth/>
+								</dimensions>
+								<rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/1000" xml:lang="en">no decoration</rs>
+								<rs type="statPreserv" ref="http://www.eagle-network.eu/voc/statepreserv/lod/13">tit. integer</rs>
+							</support>
+						</supportDesc>
+						<layoutDesc>
+							<layout>
+								<rs type="execution" ref="http://www.eagle-network.eu/voc/writing/lod/1">scalpro</rs>
+							</layout>
+						</layoutDesc>
+						</objectDesc>
+						<handDesc>
+						<handNote>
+							<width unit="cm"/>
+							<height unit="cm"/>
+						</handNote>
+						</handDesc>
+					</physDesc>
+					
+					<history>
+						<origin>
+
+						<origPlace><placeName type="provinceItalicRegion">Roma</placeName><placeName>Roma</placeName></origPlace>
+						<origDate notBefore-custom="-7" notAfter-custom="-6" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">-7 BC - -6 BC</origDate>
+							
+						
+						</origin>
+						<provenance type="found"> 
+						<placeName>Roma</placeName>                     
+						<placeName type="locus">Roma, ignoratur</placeName>
+						<placeName type="modern_region"/><placeName type="modernCountry">Italia</placeName></provenance>
+					</history>
+				</msDesc>
+				</sourceDesc>
+			</fileDesc>
+				
+			<encodingDesc>
+				<p>Marked-up according to the EpiDoc Guidelines</p>
+				<classDecl>
+				<taxonomy>
+					<category xml:id="representation">
+						<catDesc>Digitized other representations</catDesc>
+					</category>
+				</taxonomy>
+				</classDecl>
+			</encodingDesc>
+			<profileDesc>
+				<textClass>
+		<keywords>
+		<term ref="http://www.eagle-network.eu/voc/typeins/lod/79">sacer</term>
+		</keywords>
+		</textClass>
+
+				<langUsage>
+				<language ident="ar">Arabic</language>
+				<language ident="en">English</language>
+				<language ident="fr">French</language>
+				<language ident="de">German</language>
+				<language ident="grc">Ancient Greek</language>
+				<language ident="grc-Latn">Transliterated Greek</language>
+				<language ident="el">Modern Greek</language>
+				<language ident="he">Hebrew</language>
+				<language ident="it">Italian</language>
+				<language ident="la">Latin</language>
+				<language ident="sp">Spanish</language>
+				</langUsage>
+			<creation>EAGLE - Europeana Network of Ancient Greek and Latin Epigraphy</creation></profileDesc>
+			<revisionDesc>
+			<change when="2019-02-23" who="GIOVANNI ALMAGNO">
+			</change>
+
+			</revisionDesc>
+		</teiHeader>
+		
+			<facsimile>
+			
+					<graphic url="http://www.edr-edr.it/foto_epigrafi/immagini_uso/134/134390.jpg">
+					<desc>Ara sacra dedicata da Quintus Avillius Adaeus a Diana Augusta
+					<ref type="licence" target="http://www.europeana.eu/rights/rr-f/">Rights Reserved - Free Access via Epigraphic Database Roma</ref>	
+					</desc>
+					</graphic>
+				
+			</facsimile>
+			
+		<text>
+			<body>
+					
+				<div type="bibliography">
+				<listBibl>
+		
+					<bibl>
+						CIL 06, 00128 (1), cfr. pp. 3003 (2), 3755 (3)
+					</bibl> 
+			
+					<bibl>
+						CIL 05, 00429*, 3 (4)
+					</bibl> 
+			
+					<bibl>
+						Boll. Arte, 68, 1983, p. 82, c. 5v c (G. Tedeschi Grisanti) (5)
+					</bibl> 
+			
+					<bibl>
+						M. Tarpin, Vici et pagi dans l'Occident romain (Collection de l'École française de Rome, 299), Rome 2003, p. 316, R21 (6)
+					</bibl> 
+			
+					<bibl>
+						The Representation and Perception of Roman Imperial Power. Proceedings of the Third Workshop of the International Network "Impact of Empire" (Roman Empire, c. 200 B.C.-A.D. 476), a cura di L. de Blois, Amsterdam 2003, p. 219 e nt. 19 (S. Panciera) = S. Panciera, Epigrafi, epigrafia, epigrafisti. Scritti vari editi e inediti (1956-2005) con note complementari e indici, Roma 2006, p. 524 e nt. 19 (7)
+					</bibl> 
+			
+					<bibl>
+						J. B. Lott, The Neighborhoods of Augustan Rome,Cambridge 2004, pp. 183-184, nr. 5 (8)
+					</bibl> 
+			
+					<bibl>
+						Cfr.  J. Rüpke - A. Glock, Fasti sacerdotum, Stuttgart 2005, p. 816, nr. 901 (9)
+					</bibl> 
+			
+					<bibl>
+						"Dis Manibus, pili, epitaffi et altre cose antiche" di Giovannantonio Dosio, Pisa 2011, p. 85, c. 5v d, con apografo (G. Tedeschi Grisanti - H. Solin) (10)
+					</bibl> 
+			
+					<bibl>
+						G.L. Gregori - G. Almagno, Roman Calendars: Imperial Brithdays Victories and Triumphs, Beau Bassin 2019, pp. 95, 138 nr. 9 (11)
+					</bibl> 
+			
+				</listBibl>
+				</div>
+				
+				
+				<!--
+				[D]ianae August(ae) / sacrum. / Q(uintus) Avillius Adaeus, / magister vìcì / qui k(alendis) Augustìs prìmus / magisterium inìt.
+				--><div type="edition" xml:lang="la"><head>Text</head><ab><lb n="1"/>
+				<supplied reason="lost">D</supplied>ianae <expan><abbr>August</abbr><ex>ae</ex></expan><lb n="2"/>sacrum.<lb n="3"/><expan><abbr>Q</abbr><ex>uintus</ex></expan> Avillius Adaeus,<lb n="4"/>magister vìcì<lb n="5"/>qui <expan><abbr>k</abbr><ex>alendis</ex></expan> Augustìs prìmus<lb n="6"/>magisterium inìt.
+				</ab></div>
+
+				<div type="apparatus">
+		
+					<p>
+						Textus secundum (1), aliter (8), contulit ad apographum Almagno a. 2018.&lt;br&gt;Fortasse dedicatum est kalendis Augustis cum magistri vici officio inierunt; alii magistri et ministri vici qui primi inierunt (i.e. 7/6 a.C.) invenitur ad EDR005007, EDR005012, EDR103420, EDR105378, EDR128977, EDR168198.
+					</p> 
+			
+				</div>
+			
+				<div type="commentary">
+				<p/>
+				</div>
+
+			</body>
+		</text>
+		</TEI>
+        </resource>
+    </collection>
+</xtriples>
