@@ -73,12 +73,12 @@ OPTIONAL {?edhObj rdfs:seeAlso     ?eagleTypeObj .}
 OPTIONAL {?edhMat rdfs:seeAlso     ?eagleMatj .}
 OPTIONAL {?place ?otherpredicate ?otherobject .}
 OPTIONAL { ?place skos:broader    ?broader . }
-BIND (replace(STR(?inscription), "inschrift", "objekt") as ?object)
-BIND (replace(STR(?inscription), "inschrift", "writtentext") as ?writtenText)
-BIND (replace(STR(?inscription), "inschrift", "text") as ?text)
-BIND (replace(STR(?inscription), "inschrift", "reading") as ?reading)
-BIND (replace(STR(?inscription), "inschrift", "writing") as ?writing)
-BIND (replace(STR(?inscription), "inschrift", "edition") as ?edition)
-BIND (replace(STR(?inscription), "inschrift", "transcription") as ?transcription)
-BIND (replace(STR(?inscription), "inschrift", "transcriptiontext") as ?transcriptionText)
+BIND (IRI(replace(STR(?inscription), "inschrift", "objekt")) as ?object)
+BIND (IRI(replace(STR(?inscription), "inschrift", "writtentext")) as ?writtenText)
+BIND (IRI(replace(STR(?inscription), "inschrift", "text")) as ?text)
+BIND (IRI(replace(STR(?inscription), "inschrift", "reading")) as ?reading)
+BIND (IRI(replace(STR(?inscription), "inschrift", "writing")) as ?writing)
+BIND (IRI(replace(STR(?inscription), "inschrift", "edition")) as ?edition)
+BIND (IRI(replace(STR(?inscription), "inschrift", "transcription")) as ?transcription)
+BIND (IRI(replace(STR(?inscription), "inschrift", "transcriptiontext")) as ?transcriptionText)
 } LIMIT 1
