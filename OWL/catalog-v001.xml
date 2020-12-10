@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="https://w3id.org/executionTechnique/ontology/0.1" uri="https://raw.githubusercontent.com/EAGLE-BPN/epidocupconversion/master/ExecutionTechniqueOntology.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology" uri="https://romanopendata.eu/sparql/doc/epnet.owl"/>
+    <uri id="Imports Wizard Entry" name="http://nomisma.org/ontology#" uri="http://nomisma.org/ontology.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.cidoc-crm.org/crmtex/0.1/" uri="crmtex.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1607610462741" name="http://Temporary.Epigraphic.Ontology/" uri="epont.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1607610462741" name="urn:absolute:temporary.crmtex/" uri="crmtex.owl"/>
+    </group>
+</catalog>
