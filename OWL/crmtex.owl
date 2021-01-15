@@ -12,7 +12,7 @@
     <owl:Ontology rdf:about="http://www.cidoc-crm.org/crmtex/">
         <owl:versionIRI rdf:resource="http://www.cidoc-crm.org/crmtex/0.1/"/>
         <owl:imports rdf:resource="http://erlangen-crm.org/current/"/>
-        <dc:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">An Extension of CIDOC CRM to Model Ancient Textual Entities</dc:description>
+        <dc:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">An Extension of CIDOC CRM to Model Ancient Textual Entities. Based on https://github.com/Akillus/CRMtex/blob/master/CRMtex_v1.0_June_2020.pdf</dc:description>
         <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Achille Felicetti</terms:creator>
         <dc:title rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">CRMtex</dc:title>
         <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Francesca Murano</terms:creator>
