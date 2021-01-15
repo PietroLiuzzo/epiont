@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://Temporary.Epigraphic.Ontology/"
-     xml:base="http://Temporary.Epigraphic.Ontology/"
+<rdf:RDF xmlns="https://w3id.org/epont/ontology/"
+     xml:base="https://w3id.org/epont/ontology/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:ns="http://creativecommons.org/ns#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -17,8 +17,8 @@
      xmlns:prov="http://www.w3.org/ns/prov#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://Temporary.Epigraphic.Ontology/">
-        <owl:versionIRI rdf:resource="http://Temporary.Epigraphic.Ontology/0.1/"/>
+    <owl:Ontology rdf:about="https://w3id.org/epont/ontology/">
+        <owl:versionIRI rdf:resource="https://w3id.org/epont/ontology/0.1/"/>
         <owl:imports rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology"/>
         <owl:imports rdf:resource="https://w3id.org/executionTechnique/ontology/0.1"/>
         <owl:imports rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#"/>
@@ -31,15 +31,15 @@
         <dc:title rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Epigraphic Ontology</dc:title>
         <terms:creator>Frank Grieshaber</terms:creator>
         <terms:description rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">This ontology merges LAWD, CRMtex, the EDH Ontology, the EPNet onotology for OBDI and the Execution Technique Ontology, to support modeling of information about inscriptions.</terms:description>
-        <dc:language rdf:resource="http://Temporary.Epigraphic.Ontology/en"/>
+        <dc:language rdf:resource="https://w3id.org/epont/ontology/en"/>
         <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Silvia Evangelisti</terms:creator>
         <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Achille Felicetti</terms:creator>
         <terms:creator rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Francesca Murano</terms:creator>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -47,27 +47,27 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
-    <!-- http://Temporary.Epigraphic.Ontology/carriesText -->
 
-    <owl:ObjectProperty rdf:about="http://Temporary.Epigraphic.Ontology/carriesText">
+    <!-- https://w3id.org/epont/ontology/carriesText -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/epont/ontology/carriesText">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P56_bears_feature"/>
         <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E84_Information_Carrier"/>
         <rdfs:range rdf:resource="http://www.cidoc-crm.org/crmtex/TX1_Written_Text"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- http://Temporary.Epigraphic.Ontology/hasEdition -->
 
-    <owl:ObjectProperty rdf:about="http://Temporary.Epigraphic.Ontology/hasEdition">
+    <!-- https://w3id.org/epont/ontology/hasEdition -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/epont/ontology/hasEdition">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P94_has_created"/>
         <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX6_Transcription"/>
-        <rdfs:range rdf:resource="http://Temporary.Epigraphic.Ontology/Edition"/>
+        <rdfs:range rdf:resource="https://w3id.org/epont/ontology/Edition"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#hasDiplomaticText -->
@@ -76,15 +76,15 @@
         <rdfs:domain rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#Inscription"/>
         <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX6_Transcription"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#hasEditionText -->
 
     <rdf:Description rdf:about="http://edh-www.adw.uni-heidelberg.de/edh/ontology#hasEditionText">
-        <rdfs:domain rdf:resource="http://Temporary.Epigraphic.Ontology/Edition"/>
+        <rdfs:domain rdf:resource="https://w3id.org/epont/ontology/Edition"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#hasWorkstatus -->
@@ -93,7 +93,7 @@
         <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX6_Transcription"/>
         <rdfs:range rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#Workstatus"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#representsTypeOfInscription -->
@@ -102,7 +102,7 @@
         <rdfs:domain rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#Inscription"/>
         <rdfs:range rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#TypeOfInscription"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#representsTypeOfMonument -->
@@ -112,7 +112,7 @@
         <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E84_Information_Carrier"/>
         <rdfs:range rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#TypeOfMonument"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://erlangen-crm.org/current/P31_has_modified -->
@@ -120,7 +120,7 @@
     <rdf:Description rdf:about="http://erlangen-crm.org/current/P31_has_modified">
         <owl:equivalentProperty rdf:resource="https://w3id.org/executionTechnique/ontology#hasExecutionPhase"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://erlangen-crm.org/current/P53_has_former_or_current_location -->
@@ -128,7 +128,7 @@
     <rdf:Description rdf:about="http://erlangen-crm.org/current/P53_has_former_or_current_location">
         <rdfs:subPropertyOf rdf:resource="http://lawd.info/ontology/where"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://lawd.info/ontology/foundAt -->
@@ -137,7 +137,7 @@
         <owl:equivalentProperty rdf:resource="http://nomisma.org/ontology#hasFindspot"/>
         <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#hasFindingPlace"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://lawd.info/ontology/hasAttestation -->
@@ -145,7 +145,7 @@
     <rdf:Description rdf:about="http://lawd.info/ontology/hasAttestation">
         <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#isAbout"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasDepth -->
@@ -153,7 +153,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasDepth">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P43_has_dimension"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasDiameter -->
@@ -161,7 +161,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasDiameter">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P43_has_dimension"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasEndDate -->
@@ -169,13 +169,13 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasEndDate">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P4_has_time-span"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasFindspot -->
 
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasFindspot"/>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasHeight -->
@@ -183,7 +183,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasHeight">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P43_has_dimension"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasMaterial -->
@@ -191,7 +191,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasMaterial">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P45_consists_of"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasStartDate -->
@@ -199,7 +199,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasStartDate">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P4_has_time-span"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasWeight -->
@@ -207,7 +207,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasWeight">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P43_has_dimension"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#hasWidth -->
@@ -215,7 +215,7 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#hasWidth">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P43_has_dimension"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://nomisma.org/ontology#representsObjectType -->
@@ -223,13 +223,13 @@
     <rdf:Description rdf:about="http://nomisma.org/ontology#representsObjectType">
         <rdfs:subPropertyOf rdf:resource="http://nomisma.org/ontology#hasObjectType"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#hasFindingPlace -->
 
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#hasFindingPlace"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#hasProductionDate -->
@@ -237,13 +237,13 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#hasProductionDate">
         <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P4_has_time-span"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#isAbout -->
 
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#isAbout"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#isTranscribedBy -->
@@ -252,25 +252,25 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Inscription"/>
         <rdfs:range rdf:resource="http://edh-www.adw.uni-heidelberg.de/edh/ontology#Inscription"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
 
     <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
         <rdfs:domain rdf:resource="http://www.cidoc-crm.org/crmtex/TX6_Transcription"/>
-        <rdfs:range rdf:resource="http://Temporary.Epigraphic.Ontology/Edition"/>
+        <rdfs:range rdf:resource="https://w3id.org/epont/ontology/Edition"/>
     </rdf:Description>
-    
+
 
 
     <!-- https://w3id.org/executionTechnique/ontology#hasExecutionPhase -->
 
     <rdf:Description rdf:about="https://w3id.org/executionTechnique/ontology#hasExecutionPhase"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -278,17 +278,17 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
-    <!-- http://Temporary.Epigraphic.Ontology/Edition -->
 
-    <owl:Class rdf:about="http://Temporary.Epigraphic.Ontology/Edition">
+    <!-- https://w3id.org/epont/ontology/Edition -->
+
+    <owl:Class rdf:about="https://w3id.org/epont/ontology/Edition">
         <rdfs:subClassOf rdf:resource="http://lawd.info/ontology/Edition"/>
         <rdfs:comment>The edition of an inscription, which is often a part, with a numeric identifier, of a corpus of inscriptions, or is published within a specific article which may or may not solely be devoted to that edition. This is a different concept from that of a critical edition, and of an edition of a book for example.</rdfs:comment>
         <rdfs:label>Epigraphic Edition</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://edh-www.adw.uni-heidelberg.de/edh/ontology#Contributor -->
@@ -296,7 +296,7 @@
     <rdf:Description rdf:about="http://edh-www.adw.uni-heidelberg.de/edh/ontology#Contributor">
         <rdfs:subClassOf rdf:resource="http://lawd.info/ontology/Person"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://erlangen-crm.org/current/E21_Person -->
@@ -304,7 +304,7 @@
     <rdf:Description rdf:about="http://erlangen-crm.org/current/E21_Person">
         <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Person"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://erlangen-crm.org/current/E39_Actor -->
@@ -312,7 +312,7 @@
     <rdf:Description rdf:about="http://erlangen-crm.org/current/E39_Actor">
         <owl:equivalentClass rdf:resource="http://lawd.info/ontology/Agent"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://erlangen-crm.org/current/E74_Group -->
@@ -320,13 +320,13 @@
     <rdf:Description rdf:about="http://erlangen-crm.org/current/E74_Group">
         <owl:equivalentClass rdf:resource="http://lawd.info/ontology/Group"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://lawd.info/ontology/Agent -->
 
     <rdf:Description rdf:about="http://lawd.info/ontology/Agent"/>
-    
+
 
 
     <!-- http://lawd.info/ontology/ConceptualWork -->
@@ -334,13 +334,13 @@
     <rdf:Description rdf:about="http://lawd.info/ontology/ConceptualWork">
         <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Inscription"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://lawd.info/ontology/Group -->
 
     <rdf:Description rdf:about="http://lawd.info/ontology/Group"/>
-    
+
 
 
     <!-- http://lawd.info/ontology/Observation -->
@@ -348,7 +348,7 @@
     <rdf:Description rdf:about="http://lawd.info/ontology/Observation">
         <owl:equivalentClass rdf:resource="http://www.cidoc-crm.org/crmtex/S4_Observation"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://lawd.info/ontology/Place -->
@@ -356,13 +356,13 @@
     <rdf:Description rdf:about="http://lawd.info/ontology/Place">
         <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Place"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.cidoc-crm.org/crmtex/S4_Observation -->
 
     <rdf:Description rdf:about="http://www.cidoc-crm.org/crmtex/S4_Observation"/>
-    
+
 
 
     <!-- http://www.cidoc-crm.org/crmtex/TX1_Written_Text -->
@@ -370,7 +370,7 @@
     <rdf:Description rdf:about="http://www.cidoc-crm.org/crmtex/TX1_Written_Text">
         <owl:equivalentClass rdf:resource="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Inscription"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#InformationCarrier -->
@@ -378,25 +378,25 @@
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#InformationCarrier">
         <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E84_Information_Carrier"/>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Inscription -->
 
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Inscription"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Person -->
 
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Person"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Place -->
 
     <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#Place"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2015/1/EPNet-ONTOP_Ontology#TemporalEntity -->
@@ -409,4 +409,3 @@
 
 
 <!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
-
